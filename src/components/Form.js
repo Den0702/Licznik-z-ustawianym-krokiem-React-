@@ -14,7 +14,6 @@ function Form(props) {
             <input
                 type="text"
                 placeholder="Enter name"
-                id="new-user"
             /><br/>
             <button type="submit">Dodaj użytkownika</button>
         </form>

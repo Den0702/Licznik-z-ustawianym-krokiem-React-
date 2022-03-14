@@ -11,10 +11,9 @@ class App extends Component {
         super(props);
 
         this.state = {
-            users: this.props.users
+            users: []
         }
-
-        this.addUserName = this.addUserName.bind(this);
+        //this.addUserName = this.addUserName.bind(this);
         this.addUser = this.addUser.bind(this);
     }
     
@@ -23,7 +22,7 @@ class App extends Component {
     
     addUser(name) {
         console.log("addUser():" + name);
-        const newUser = { name: name }; 
+        const newUser = { name: name, id: Date.now() }; 
 
         this.setState({
             users: [...this.state.users,  newUser]
@@ -31,9 +30,9 @@ class App extends Component {
         
     }
     
-    usersList = this.state.users.map(user => <User name={user.name}/>)
-
     render() {
+        let usersList = this.state.users.map(user => <User name={user.name} id={user.id}/>)
+
         return (
             <div className="App">
                 <header className="App-header"><h4>Lista użytkowników</h4></header>
@@ -41,7 +40,7 @@ class App extends Component {
                 <Form addUserName={this.addUser} />
 
                 <ul className="users-list">
-                    {this.usersList}
+                    {usersList}
                 </ul>
             </div>
         );
